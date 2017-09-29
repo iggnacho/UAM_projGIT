@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<!--  Ignacio Carter Cuadra
+ UAM Research Assistant/ Web Map Developer
+ ignaciocartercuadra@yahoo.com -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="app.css">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Publication Influence</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse " id="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <!-- <a class="navbar-brand" href="#"><img id="getty_logo" src="img/test.png"></a> --><span class="navbar-brand"><img id="getty_logo" src="img/test.png"></span> <span class="navbar-brand" id="title_nav">Influence of David Lamelas: Publication</span> </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#" data-toggle="modal" data-target="#myModal" id="aboutModal">How to use</a></li>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <div class="btn-group">
+                                <input type="text" id="searchInput" class="form-control" placeholder="Search Main Map" style="font-family:sans-serif;"> <span id="searchclear" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" data-trigger="hover" data-placement="left" title="Reset search selection"></span> </div>
+                        </div>
+                        <button type="button" class="btn btn-default" id="searchSubmit">Submit</button>
+                    </form>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="david2.json">View Raw Data</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#myModalContact">Contact Us</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#myModalShare" id="sharePop">Share the Link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div id="map">
+        <!-- The overlay slide in bar-->
+        <div id="myNav" class="overlay overlay-right">
+            <div id="fsMapGraph" class="overlay overlay-top">
+                  <!-- The overlay slide in bar-->
+                    <div id="myNavGraph" class="overlay overlay-graph"> <a href="javascript:void(0)" id="closeMeGraph" class="closebtn">&times;</a>
+                        <h1>Legend</h1>
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Related Artists <span id="relarts_test" class="glyphicon glyphicon-menu-down"></a>
+                                      </h4> </div>
+                                <div id="collapseOne" class="panel-collapse collapse">
+                                    <div class="panel-body" id="body1"> </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Authors <span id="author_test" class="glyphicon glyphicon-menu-down"></span></a>
+                                      </h4> </div>
+                                <div id="collapseTwo" class="panel-collapse collapse">
+                                    <div class="panel-body" id="body2"> </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Events <span id="events_test" class="glyphicon glyphicon-menu-down"></a>
+                                      </h4> </div>
+                                <div id="collapseThree" class="panel-collapse collapse">
+                                    <div class="panel-body" id="body3"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="container-fluid" id="grapharea">
+                    <div id="map-canvas"></div>
+                    <div id="search-ui-widget">
+                        <!-- Card Projects -->
+                        <div class="card">
+                            <div class="card-title-div"> <span class="card-title"></span> </div>
+                            <div class="card-content">
+                                <p>Card content for event, include date, location, and authors?</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="ui-widget">
+                            <input id="searchframe2">
+                            <button type="button" id="graphSearch2">Search Graph</button>
+                            <button type="button" id="legendTrigger2">Legend</button>
+                            <button type="button" id="resetgraphTMap">Reset Graph</button>
+                        </div>
+                    </div>
+                    <button id="closeoverlaytop" type="button" class="btn btn-default btn-lg">Close This Overlay</button>
+                </div>
+            </div> <a href="javascript:void(0)" id="closeMeRight" class="closebtn">&times;</a>
+            <div id="headingDiv" class="container">
+                <!-- Button to close the overlay navigation -->
+                <!-- <a href="javascript:void(0)" id="closeMeRight"class="closebtn">&times;</a> -->
+                <div id="testDiv">
+                    <h3><div id="title_pop" align="center">
+                        <p>Title </p>
+                        <br>
+                    </div>
+                        </h3>
+                    <div id="container_top" align="center">
+                        <hr width="25%"></hr> <b>Author: <span id="author_input"></span>
+                            <br>Professional Role: <span id="role_input"></span></b> </div>
+                </div>
+            </div>
+            <p></p>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6" id="info-stuff">
+                        <ul class="list-group" style="width: 100%"></ul>
+                        <div class="row" id="usrBttn">
+                            <!-- ICONS -->
+                            <center>
+                                <button type="button" class="btn btn-default navbar-btn" id="bckList">Back to List</button>
+                                <button type="button" class="btn btn-default navbar-btn" id="bckMap">Back to Map</button>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6" id="media_Side"> </div>
+                    <div class="col-lg-12 col-md-12" id="rArt_title">
+                        <button type="button" class="btn btn-default btn-lg" id="buttontoOpen"> Open Related Artists Network Graph</button>
+                        <!-- </div> -->
+                        <!-- <div id="d3graph"></div> -->
+                        <div id="footer_slide">
+                            <button type="button" class="btn btn-default navbar-btn" id="backPedal">Go Back to List</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- End Overlay-->
+    </div>
+    <footer class="footer">
+        <div class="container-fluid">
+            <button type="button" id="toTop" class="btn btn-lg" aria-label="Left Align"> <span class="glyphicon glyphicon glyphicon-upload" aria-hidden="true"></span> </button><span id="date-title">Date: 1964 to 2016</span></div>
+    </footer>
+    <!-- The bottom overlay -->
+    <div id="myNavBot" class="overlay overlay-bottom">
+        <div class="row" id="rowCharts">
+            <div id="container">
+                <div id="line-year" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+                <div id="year-info" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <span id="date-title3">Date: 1964 to 2016</span>
+                    <button type="button" id="reset-graphs2" class="btn btn-primary btn-md" aria-label="Left Align"> <span>Reset Data</span> </button>
+<!--                    <a href="javascript:void(0)" id="closeMeBot" class="closebtnBot">&times;</a>-->
+                     <button type="button" id="closeMeBot" class="btn btn-primary btn-md" aria-label="Left Align"> <span>Close</span> </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="xs_mb" class="visible-xs hidden-sm hidden-md hidden-lg"></div>
+    <div id="sm_mb" class="hidden-xs visible-sm hidden-md hidden-lg"></div>
+    <div id="md_mb" class="hidden-xs hidden-sm visible-md hidden-lg"></div>
+    <div id="lg_mb" class="hidden-xs hidden-sm hidden-md visible-lg"></div>
+    <div class="splash fade-in">
+        <div id="modalAuthor">David Lamelas
+            <br>PUBLICATION
+            <br>Influence Map</div>
+        <div id="modalBods">
+            <button id="toMap" type="button">Click here to continue to map</button>
+        </div>
+    </div>
+    <!-- END -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Website User Manual</h4> </div>
+                <div class="modal-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">How to use the Map </h3></div>
+                        <div class="panel-body"><span>Click on any marker on the map to open up information about the point of interest, or a list of points of interest within a near radius(cluster). If clicked on cluster of markers, you will receive a cluster report in the overlay. Click on any link within the list to continue to the information panel for that point of interest. If there is a related artists graph available, a button will display under the information panel to open up the graph overlay. </span></div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">How to use the Related Artists Graph </h3></div>
+                        <div class="panel-body"><span>The overlay graph is designed to be explored. Click on the artist name nodes to see if they have any other events in the dataset. Once an event or an artist expands you can always click on them to collapse their networks. The map in the top left corner shows the locations of the events being displayed in the network and will automatically update as you explore and expand the graph.</span></div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Working with Time</h3></div>
+                        <div class="panel-body"><span>The map has the ability to filter the selection of data being displayed by date ranges and also the ability to show you how the influences have changed year-to-year by pressing the play button. The time bar chart can be displayed upon clicking the up button by the time displayed at the footer of the map application. This allows for custom year range selections through click and dragging the years desired to display.</span></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModalContact" tabindex="-1" role="dialog" aria-labelledby="myModalContactLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <center>
+                        <h4 class="modal-title" id="myModalLabel">Contact Form</h4></center>
+                </div>
+                <div class="modal-body">
+                    <form id="contact-form" method="post" action="contact.php" role="form">
+                        <div class="messages"></div>
+                        <div class="controls">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_name">Firstname *</label>
+                                        <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_lastname">Lastname *</label>
+                                        <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_email">Email *</label>
+                                        <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_phone">Phone</label>
+                                        <input id="form_phone" type="tel" name="tel" class="form-control" placeholder="Please enter your phone">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="form_phone">Subject</label>
+                                        <input id="form_phone" type="tel" name="sub" class="form-control" placeholder="Please enter Subject*" required="required" data-error="Valid email is required.">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="form_message">Message *</label>
+                                        <textarea id="form_message" name="mssg" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="submit" class="btn btn-success btn-send" value="Send message"> </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="text-muted"><strong>*</strong> These fields are required.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModalShare" tabindex="-1" role="dialog" aria-labelledby="myModalShareLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <center>
+                        <h4 class="modal-title" id="myModalLabel">Share the Link</h4></center>
+                </div>
+                <div class="modal-body">
+                    <center> <a id="twitterShare" href=""><i id="social-tw" title="Share on Twitter" target="_blank" data-toggle="tooltip" data-placement="top" class="fa fa-twitter-square fa-3x social"> </i></a> <a id="googleShare" href=""><i id="social-gp" class="fa fa-google-plus-square fa-3x social" title= "Share on Google+"target="_blank" data-toggle="tooltip" data-placement="top"></i></a> <a id="linkedShare" href=""><i id="social-li" class="fa fa-linkedin-square fa-3x social" title= "Share on LinkedIn"target="_blank" data-toggle="tooltip" data-placement="top"></i></a> <a id="fbShare" href=""><i id="social-fb" title="Share on Facebook" target="_blank" data-toggle="tooltip" data-placement="top" class="fa fa-facebook-square fa-3x social"></i></a> </center>
+                </div>
+                <div class="modal-footer">
+                    <center>If sharing this link on a public computer/device: Please remember to sign out of any logged in social media accounts.</center>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END -->
+    <script type="text/javascript" src='./commons.bundle.js'></script>
+    <script type="text/javascript" src='./app.bundle.js'></script>
+</body>
+
+</html>
