@@ -10,3 +10,7 @@
 <img src="https://user-images.githubusercontent.com/13355797/31030699-273359a8-a50b-11e7-818d-de905a8355fe.JPG" height="400">
 
 ![Exploring Artist Networks](https://user-images.githubusercontent.com/13355797/31030696-272e4602-a50b-11e7-9537-89a1d3399b59.gif)
+
+### License
+
+This project is licensed under the MIT License - see the LICENSE.md file for details
